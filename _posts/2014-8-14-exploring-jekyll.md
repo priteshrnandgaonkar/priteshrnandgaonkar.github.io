@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Exploring Jekyll2
+title: Exploring Jekyll
 ---
 
 This site is made using jekyll and markdown. Behold yourself lot of iOS stuffs is on the way
