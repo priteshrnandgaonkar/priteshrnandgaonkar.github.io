@@ -3,7 +3,7 @@ layout: post
 title: Threading issues in iOS
 ---
 
-Recently during my development I faced a common threading related [producer-consumer](https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem) problem. 
+Recently during an iOS application development, I faced a common threading related [producer-consumer](https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem) problem. 
 
 So I thought lets understand the problem and solve it. I have created the simplified producer-consumer scenario below.
 
