@@ -7,7 +7,7 @@ Recently during an iOS application development, I faced a common threading relat
 
 So I thought lets understand the problem and solve it. I have created the simplified producer-consumer scenario below.
 
-```
+```swift
 var items = [Int]()
 
 //Producer
@@ -48,7 +48,7 @@ Lets solve this issue, We can solve this issue in three ways. Lets start explori
 	
 The simple solution that comes in the mind would be to lock the other execution blocks when `items` is being modified.Lets implement it
 	
-```
+```swift
  var lock = NSLock()
  func add(x: Int) {
     lock.lock() // Locks the thread
@@ -75,7 +75,7 @@ In the above code we can see that, `lock` blocks the execution of other blocks, 
 
 We can implement the same thing using GCD's serial queue. We can dispatch the task of addition and deletion in the serial queue.
 
-```
+```swift
 let executionQueue = dispatch_queue_create("com.prit.TestGCD.executionqueue", DISPATCH_QUEUE_SERIAL)
 
 //Producer
@@ -110,7 +110,7 @@ We can solve this issue by using semaphore too.
 
 Semaphore allows more than one thread to access a shared resource if its configured in that way. In our case we just need only one thread to execute the resource at any time. Lets understand the semaphore first.
 
-```
+```swift
 let semaQueue = dispatch_queue_create("com.prit.TesttGCD.Sema", DISPATCH_QUEUE_CONCURRENT)
 let semaphore = dispatch_semaphore_create(1)
     
@@ -142,7 +142,7 @@ dispatch_async(semaQueue) {
 
 If you run the above code, you will see that after 5 secs the following will be printed
 
-```
+```swift
 Sema block 1
 Sema block 2
 Sema block 3
@@ -152,7 +152,7 @@ Which is what is exepected, as we are delaying the execution of the first block 
 
 Lets use this idea in our case.
 
-```
+```swift
     let semaQueue = dispatch_queue_create("com.prit.TesttGCD.SemaQueue", DISPATCH_QUEUE_CONCURRENT)
     let semaphore = dispatch_semaphore_create(1)
    
@@ -177,6 +177,7 @@ Lets use this idea in our case.
         items.removeLast()
     }  
 ```
+
 
 If we run the above code, we wouldn't face any problems of producer-consumer problem and all threads do their work as a disciplined child :P
 
