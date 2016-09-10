@@ -83,9 +83,9 @@ func remove() {
     print("Remove \(num)")
 }
 ```
-The above code blocks the execution of other threads whenever the collection `items` is modified. Thus whenever a block is being executed, the lock ensures that no other block is being taken up for execution and hence making the above code thread-safe.
+The above code blocks the execution of other threads whenever the `items` is modified. Thus whenever a block is being executed, the lock ensures that no other block is being taken up for execution and hence making the above code thread-safe.
 
-The above code uses `defer` in `remove`, which was not used earlier.It is used because, the code in `defer` is called just before leaving the function. Since the `remove` has two paths to exit, replicating `lock.unlock()` at two places is bad. Hence in this case `defer` is useful.
+The above code uses `defer` in `remove`, which was not used earlier.It is used because, the code in `defer` is called just before leaving the function. Since the `remove` has two paths to exit, replicating `lock.unlock()` at two places is not recommended. Hence in this case `defer` is useful.
 
 The other approach is to use GCD API's.
 
@@ -163,7 +163,7 @@ Sema block 3
 Sema block 4
 Sema block 1
 ```	
-Which is exepected, as we have configured the semaphore to execute two blocks at a time. Initially the first two blocks would be taken up for execution, the second block would finish first(i.e why `sema block 2` will be printed) and thus would allow the program to take one more block for execution, which will be block 3.Since block 3 has no delay it would finish in no time just after block 2 and consequently program would pick up block 4 which would end soon like block 3. Block 1 would end last as it has maximum delay amongst other blocks.
+Which is expected, as we have configured the semaphore to execute two blocks at a time. Initially the first two blocks would be taken up for execution, the second block would finish first(i.e why `sema block 2` will be printed) and thus would allow the program to take one more block for execution, which will be block 3.Since block 3 has no delay, it would finish in no time just after block 2 and consequently the program would pick up block 4, which would end soon like block 3. Block 1 would end last as it has maximum delay amongst other blocks.
 
 Thus to solve the above concurrency issue, we can use semaphore with capacity of one.
 
