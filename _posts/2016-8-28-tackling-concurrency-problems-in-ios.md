@@ -155,7 +155,7 @@ Which is exepected, as we have configured the semaphore to execute just one bloc
 Lets use this idea in our case.
 
 ```swift
-    let semaQueue = dispatch_queue_create("com.prit.TesttGCD.SemaQueue", DISPATCH_QUEUE_CONCURRENT)
+    let semaQueue = dispatch_queue_create("com.prit.TestGCD.SemaQueue", DISPATCH_QUEUE_CONCURRENT)
     let semaphore = dispatch_semaphore_create(1)
    
     func add(x: Int) {
@@ -205,7 +205,7 @@ let concurrentQueue = dispatch_queue_create("com.prit.TestGCD.ConcurrentQueue", 
                 print("Remove Execution returned because of 0 items")
                 return
             }
-            print("Remove Lock Execution \(self.items.last)")
+            print("Remove Execution \(self.items.last)")
             self.items.removeLast()
         }
     }
