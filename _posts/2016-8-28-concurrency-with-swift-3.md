@@ -28,10 +28,10 @@ func remove() {
 let dispatchQueue = DispatchQueue(label: "com.prit.TestGCD.DispatchQueue", attributes: DispatchQueueAttributes.concurrent)
 
 for x in 0..<10 {
-        dispatchQueue.async {
-            self.add(num: x)
-        }
+    dispatchQueue.async {
+        self.add(num: x)
     }
+}
     
 for _ in 0..<10 {
     dispatchQueue.async {
