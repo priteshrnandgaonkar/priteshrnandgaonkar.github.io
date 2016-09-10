@@ -13,7 +13,7 @@ var items = [Int]()
 //Producer:
 func add(num: Int) {
     print("Add \(num)")
-  items.append(num)
+    items.append(num)
 }
     
 //Consumer:
