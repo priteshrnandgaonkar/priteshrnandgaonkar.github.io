@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I am a tech enthusiast. I am an iOS developer in the day and machine learning enthusiast at night.
+I am interested in iOS development and Machine Learning.
 
 Available for hire!
 
