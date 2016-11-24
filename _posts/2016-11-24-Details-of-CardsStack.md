@@ -30,13 +30,15 @@ Whenever the cardlayout of the `UICollectionView` is invalidated `UICollectionVi
 * `func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]?` (called manytimes)
 * `func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes?`
 
-`prepare()` is meant to be utilised for preparing the layout process by performing calculation which can be used when the system calls the second function. So I calculated the the attributes of the cell in `prepare()` based on the state and the above discussed information.
+`prepare()` is meant to be utilised for preparing the layout process by performing calculation which can be used when the system calls the second function. So I calculated the the attributes of the cell in `prepare()` based on the cards state and the above discussed information and stored it in `cachedAttributes` which is an array of `UICollectionViewLayoutAttributes`
 
-System calls `func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]?` many times and passes the rect as a parameter ans expects the attributes of the cell overlapping the given the rect.
+System calls `func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]?` many times and passes the rect as a parameter and expects the attributes of the cell overlapping the given the rect.
+
+Since we are clear with the understanding of the layout process, lets look at the frame calculation.
 
 ### Cards frame calculation
 
-The frame of the card is dependent on its index in the stack and obviously on its UI information. So lets write a function which takes this parameter and returns the frame of the card.
+The frame of the card is dependent on its index in the stack and obviously on its UI information. So lets write a function which takes this parameters and returns the frame of the card.
 
 ``` swift
 func frameFor(index: Int, cardState: CardState, translation: Float) -> CGRect {
