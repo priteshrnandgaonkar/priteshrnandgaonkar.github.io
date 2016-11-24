@@ -24,7 +24,7 @@ All the above info is contained in `Configuration` object. Along with this infor
 
 To utilise this information and give the custom layout attributes to the cards, its important to understand how the `UICollectionView` coordinates with `UICollectionViewLayout`. 
 
-Whenever the cardlayout of the `UICollectionView` is invalidated `UICollectionView` calls the following methods in the given order
+Whenever the cardlayout of the `UICollectionView` is invalidated, system calls the following methods in the given order
 
 * `func prepare()`
 * `func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]?` (called manytimes)
