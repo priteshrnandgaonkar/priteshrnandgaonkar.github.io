@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I am interested in iOS development and Machine Learning.
+I am interested in iOS development.
 
 Available for hire!
 
