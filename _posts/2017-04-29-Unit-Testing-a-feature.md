@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Unit-Testing a feature
+title: Unit-Testing a ViewController
 ---
 
 Unit-Testing is an important tool to validate the functionality. But I feel that it is not used to its full potential. Usually developers just test out the functions which takes in some arguments and returns some data model. Although such tests are usefull but they can't help you to ascertain that the feature would definitely work if the tests are successfull.
@@ -250,8 +250,8 @@ Going back to the test function,
 
 ```
 
-I assigned the input argumets to text field by `        vcLogin.username.text = "pritesh"` `vcLogin.password.text = "poY7trl"` . I also assigned the fake login service class to return error of type `nilData`, when the user taps Login button. But how you would simulate the button tap. For that I have used
-`        vcLogin.loginButton.sendActions(for: .touchUpInside)
+I assigned the input argumets to text field by       `vcLogin.username.text = "pritesh"` `vcLogin.password.text = "poY7trl"` . I also assigned the fake login service class to return error of type `nilData`, when the user taps Login button. But how you would simulate the button tap. For that I have used
+`vcLogin.loginButton.sendActions(for: .touchUpInside)
 `
 There's a function available in `UIControl`  which sends action. The documentation reads as follows
 
@@ -261,7 +261,7 @@ There's a function available in `UIControl`  which sends action. The documentati
 
 ```
 
-Now `        vcLogin.loginButton.sendActions(for: .touchUpInside)
+Now `vcLogin.loginButton.sendActions(for: .touchUpInside)
 ` calls `@IBAction func tappedLogin(_ sender: UIButton)` of the `vcLogin`. This function calls the LoginService's `login(withUsername username: String?, password: String?)` which always fails(as we have assigned to the fake one) and calls the LoginServiceDelegate's `handle(error: Error)`, where we test whether the error with which it is called is of the expected type or not. We also test whether the function is called or not. The assertions are as follows
 
 ``` swift
