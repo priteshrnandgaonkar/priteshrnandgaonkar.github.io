@@ -26,7 +26,7 @@ Now our plan is to not only test the above validation but also the end-to-end fl
 
 ### Architecting the Feature
 
-The main idea to test out the above feature would be dependency-injection. We would have seperate `LoginService` class that handles the api request and validation. By doing this, while testing, we can create its fake and test out our scenario in different cases like wrong input credentials, unexpected response from the api etc. We would explore our classes in detail in the following paras.
+The main idea to test out the above feature would be dependency-injection. We would have seperate `LoginService` class that handles the api request and validation. By doing this, while testing, we can create its fake and test out our scenario in different cases like wrong input credentials, unexpected response from the api etc. We would explore our classes in detail in the following paras. You can have a look at the code [here](https://github.com/priteshrnandgaonkar/TestLoginApplication).
 
 I would have a `ViewController` which looks like the following
 
